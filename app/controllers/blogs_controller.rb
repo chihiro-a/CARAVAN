@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:id])
   end
 
   def new
@@ -14,7 +15,7 @@ class BlogsController < ApplicationController
     blog = Blog.new(blog_params)
     # モデル名はblogなのでblog_paramsにする
     blog.save
-    redirect_to blogs_path
+    redirect_to blog_path(blog.id)
   end
 
   def edit
